@@ -1,20 +1,13 @@
 package site.nomoreparties.stellarburgers;
 
 import io.qameta.allure.junit4.DisplayName;
-import io.restassured.RestAssured;
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 
-public class CreateUserTest {
+public class CreateUserTest extends TestBase {
 
     User user = new User("Daniil", "dannil166@yandex.ru", "123");
-
-    @Before
-    public void setUp() {
-        RestAssured.baseURI = "https://stellarburgers.nomoreparties.site";
-    }
 
     @Test
     @DisplayName("Check user creation")

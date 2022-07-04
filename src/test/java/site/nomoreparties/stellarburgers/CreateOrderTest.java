@@ -1,7 +1,6 @@
 package site.nomoreparties.stellarburgers;
 
 import io.qameta.allure.junit4.DisplayName;
-import io.restassured.RestAssured;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +12,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static site.nomoreparties.stellarburgers.IngredientsAction.createOrder;
 import static site.nomoreparties.stellarburgers.IngredientsAction.getIngredientList;
 
-public class CreateOrderTest {
+public class CreateOrderTest extends TestBase {
 
     private User user = new User("Daniil", "dannilq333@yandex.ru", "123123");
     private String accessToken;
@@ -23,7 +22,6 @@ public class CreateOrderTest {
 
     @Before
     public void setUp() {
-        RestAssured.baseURI = "https://stellarburgers.nomoreparties.site";
         UserActions.createUser(user);
         accessToken = UserActions.getAccessTokenUser(user);
         ingredientList = new Ingredient(List.of(getIngredientList().get(2).get_id(), getIngredientList().get(4).get_id(), getIngredientList().get(6).get_id()));

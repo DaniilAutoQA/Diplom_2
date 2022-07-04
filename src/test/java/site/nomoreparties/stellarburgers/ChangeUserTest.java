@@ -2,7 +2,6 @@ package site.nomoreparties.stellarburgers;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
-import io.restassured.RestAssured;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.junit.After;
@@ -12,14 +11,13 @@ import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
 
-public class ChangeUserTest {
+public class ChangeUserTest extends TestBase {
 
     User user = new User("Daniil", "dannil333@yandex.ru", "123123");
     String accessToken;
 
     @Before
     public void setUp() {
-        RestAssured.baseURI = "https://stellarburgers.nomoreparties.site";
         UserActions.createUser(user);
         accessToken = UserActions.getAccessTokenUser(user);
     }
